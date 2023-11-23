@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Penjaga Hati</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+    .h2 {
+        text-align: center;
+        margin-bottom: 200px;
+    }
+    #lyrics-container {
+      font-size: 24px;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .transition {
+      animation: fadeIn 5s linear;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    audio {
+      width: 30%;
+    }
+  </style>
+</head>
+<body>
+    <h2>THANKYOU SUDAH MENERIMAKU</h2>
+<div id="lyrics-container"></div>
+
+<audio controls autoplay loop>
+  <source src="lagu2.mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
+
+<script>
+  const lyrics = [
+    "Apapun kan ku lakukan tuk dirimu sayang",
+    "Oh penjaga hatiku",
+    "ohh ooohh...",
+    "Karna bersamamu semua terasa indah",
+    "Gundah gulana hatiku pun hancur sirna",
+    "Janji ku tak kan ku lepas",
+    "wahai kau bidadariku dari surga",
+    "Tuk selamanya",
+    "Tuk selamanya",
+    "Tuk selamanya",
+    "...",
+    "...",
+    "...",
+    "...",
+    "...",
+    "...",
+    "..."
+  ];
+
+  const lyricsContainer = document.getElementById('lyrics-container');
+
+  function displayLyrics(index) {
+    lyricsContainer.innerHTML = lyrics[index];
+    lyricsContainer.classList.add('transition');
+  }
+
+  function nextLyric() {
+    const currentIndex = lyrics.indexOf(lyricsContainer.innerHTML);
+    if (currentIndex < lyrics.length - 1) {
+      lyricsContainer.classList.remove('transition');
+      setTimeout(() => {
+        displayLyrics(currentIndex + 1);
+      }, 500); // Adjust the delay as needed
+    }
+  }
+
+  // Initial display
+  displayLyrics(0);
+
+  // Set interval for the transition
+  setInterval(nextLyric, 4900); // Change the interval as needed
+</script>
+</body>
+</html>
